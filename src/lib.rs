@@ -9,7 +9,7 @@ document.addEventListener(\"DOMContentLoaded\", function () {
 	for (var e of document.getElementsByTagName(\"code\")) {
 		if (e.classList.contains(\"language-math\")) continue;
 		var n = e.nextSibling; var p = e.previousSibling;
-		if (/^\\$/.test(n.data) && /\\$$/.test(p.data)) {
+		if (n && p && /^\\$/.test(n.data) && /\\$$/.test(p.data)) {
 			katex.render(e.innerText, e);
 			n.splitText(1); n.remove();
 			p.splitText(p.data.length - 1).remove();
