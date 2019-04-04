@@ -14,10 +14,10 @@ document.addEventListener(\"DOMContentLoaded\", function () {
 			let n = e.nextSibling; let p = e.previousSibling;
 			if (n && p && /^\\$/.test(n.data) && /\\$$/.test(p.data)) {
 				to_do.push(function () {
+					let n = e.nextSibling; let p = e.previousSibling;
 					let x = document.createElement('span');
 					katex.render(e.innerText, x, {throwOnError: false});
 					e.parentNode.replaceChild(x, e);
-					let n = e.nextSibling; let p = e.previousSibling;
 					n.splitText(1); n.remove();
 					p.splitText(p.data.length - 1).remove();
 				});
