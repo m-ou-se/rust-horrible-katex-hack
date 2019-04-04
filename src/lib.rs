@@ -28,7 +28,7 @@ document.addEventListener(\"DOMContentLoaded\", function () {
 //!
 //! # Usage
 //!
-//! Look at the source of `lib.rs` of this crate, and copy the doc attribute
+//! Look at the source of [`lib.rs`][1] of this crate, and copy the doc attribute
 //! containing the `<link>` and `<script>` tags.
 //!
 //! Then, write ``$`\frac 1 2 + 3`$`` for inline math, which renders as $`\frac 1 2 + 3`$.
@@ -46,3 +46,5 @@ document.addEventListener(\"DOMContentLoaded\", function () {
 //! ```math
 //! \int_{-\infty}^\infty f(x)\,dx
 //! ```
+//!
+//! [1]: https://github.com/m-ou-se/rust-horrible-katex-hack/blob/master/src/lib.rs
