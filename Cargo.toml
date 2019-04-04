@@ -1,0 +1,10 @@
+[package]
+name = "horrible-katex-hack"
+version = "0.1.0"
+authors = ["Mara Bos <m-ou.se@m-ou.se>"]
+license = "BSD-2-Clause"
+repository = "https://github.com/m-ou-se/rust-horrible-katex-hack"
+keywords = ["katex", "latex"]
+edition = "2018"
+
+[dependencies]
