@@ -2,22 +2,29 @@
 <script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js\" integrity=\"sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij\" crossorigin=\"anonymous\"></script>
 <script>
 document.addEventListener(\"DOMContentLoaded\", function () {
-	for (var e of document.getElementsByTagName(\"code\")) {
+	let to_do = [];
+	for (let e of document.getElementsByTagName(\"code\")) {
 		if (e.classList.contains(\"language-math\")) {
-			var x = document.createElement('p');
-			katex.render(e.innerText, x, {displayMode: true, throwOnError: false});
-			e.parentNode.parentNode.replaceChild(x, e.parentNode);
+			to_do.push(function () {
+				let x = document.createElement('p');
+				katex.render(e.innerText, x, {displayMode: true, throwOnError: false});
+				e.parentNode.parentNode.replaceChild(x, e.parentNode);
+			});
 		} else {
-			var n = e.nextSibling; var p = e.previousSibling;
+			let n = e.nextSibling; let p = e.previousSibling;
 			if (n && p && /^\\$/.test(n.data) && /\\$$/.test(p.data)) {
-				var x = document.createElement('span');
-				katex.render(e.innerText, x, {throwOnError: false});
-				e.parentNode.replaceChild(x, e);
-				n.splitText(1); n.remove();
-				p.splitText(p.data.length - 1).remove();
+				to_do.push(function () {
+					let x = document.createElement('span');
+					katex.render(e.innerText, x, {throwOnError: false});
+					e.parentNode.replaceChild(x, e);
+					let n = e.nextSibling; let p = e.previousSibling;
+					n.splitText(1); n.remove();
+					p.splitText(p.data.length - 1).remove();
+				});
 			}
 		}
 	}
+	for (let f of to_do) f();
 });
 </script>
 <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css\" integrity=\"sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ\" crossorigin=\"anonymous")]
