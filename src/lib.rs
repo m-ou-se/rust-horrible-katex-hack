@@ -5,11 +5,15 @@
 document.addEventListener(\"DOMContentLoaded\", function () {
 	for (var e of document.getElementsByTagName(\"code\")) {
 		if (e.classList.contains(\"language-math\")) {
-			katex.render(e.innerText, e, {displayMode: true});
+			var x = document.createElement('p');
+			katex.render(e.innerText, x, {displayMode: true, throwOnError: false});
+			e.parentNode.parentNode.replaceChild(x, e.parentNode);
 		} else {
 			var n = e.nextSibling; var p = e.previousSibling;
 			if (n && p && /^\\$/.test(n.data) && /\\$$/.test(p.data)) {
-				katex.render(e.innerText, e);
+				var x = document.createElement('span');
+				katex.render(e.innerText, x, {throwOnError: false});
+				e.parentNode.replaceChild(x, e);
 				n.splitText(1); n.remove();
 				p.splitText(p.data.length - 1).remove();
 			}
