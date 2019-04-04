@@ -1,5 +1,6 @@
 [package]
 name = "horrible-katex-hack"
+description = "A way of using KaTeX with rustdoc by abusing the doc(html_favicon_url) attribute."
 version = "0.1.0"
 authors = ["Mara Bos <m-ou.se@m-ou.se>"]
 license = "BSD-2-Clause"
